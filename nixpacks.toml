@@ -1,0 +1,16 @@
+# Educational Cybersecurity measures purposes: sanitized for safe sharing, review, and classroom-style inspection of the code here.
+[phases.setup]
+nixPkgs = ["python311", "python311Packages.pip", "google-chrome", "chromedriver"]
+
+[phases.install]
+cmds = ["pip install -r requirements.txt"]
+
+[phases.deploy]
+cmds = ["python necap.py"]
+
+[build]
+env = {
+  "PYTHONUNBUFFERED": "1",
+  "CHROME_BIN": "/nix/store/*-google-chrome/bin/google-chrome",
+  "CHROMEDRIVER_PATH": "/nix/store/*-chromedriver/bin/chromedriver"
+}
